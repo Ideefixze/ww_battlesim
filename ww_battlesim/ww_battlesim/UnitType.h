@@ -6,15 +6,15 @@ class UnitType
 	std::string name;
 	int health;
 	float damage;
-	float counterDamage;
+	float rangedDamage;
 	std::map<std::string, float> damageModifierVersus;
 
 public:
 	std::string GetName();
 	int GetHealth();
-	float GetDamage(std::string vs);
-	float GetCounterDamage(std::string vs);
-	UnitType(std::string unitName, int baseHP, int baseDamage, std::map<std::string, float> dmgVersus);
+	float GetDamage();
+	float GetRangedDamage();
+	UnitType(std::string unitName, int baseHP, int baseDamage, int rangedDamage, std::map<std::string, float> dmgVersus);
 	~UnitType();
 };
 

@@ -12,21 +12,22 @@ int UnitType::GetHealth()
 	return health;
 }
 
-float UnitType::GetDamage(std::string vs)
+float UnitType::GetDamage()
 {
-	return damageModifierVersus[vs]*damage;
+	return damage;
 }
 
-float UnitType::GetCounterDamage(std::string vs)
+float UnitType::GetRangedDamage()
 {
-	return counterDamage*GetDamage(vs);
+	return rangedDamage;
 }
 
-UnitType::UnitType(std::string unitName, int baseHP, int baseDamage, std::map<std::string, float> dmgVersus)
+UnitType::UnitType(std::string unitName, int baseHP, int baseDamage, int baseRangedDamage, std::map<std::string, float> dmgVersus)
 {
 	name = unitName;
 	health = baseHP;
 	damage = baseDamage;
+	rangedDamage = baseRangedDamage;
 	damageModifierVersus = dmgVersus;
 }
 

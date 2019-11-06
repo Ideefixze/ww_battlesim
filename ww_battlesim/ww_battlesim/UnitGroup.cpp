@@ -2,7 +2,6 @@
 #include "UnitGroup.h"
 
 
-
 bool UnitGroup::isAlive()
 {
 	return alive;
@@ -18,40 +17,32 @@ UnitType UnitGroup::GetType()
 	return type;
 }
 
-float UnitGroup::GetTotalDamageVersus(UnitType target)
+int UnitGroup::GetTotalDamage()
 {
-	return type.GetDamage(target.GetName())*count;
+	return type.GetDamage()*count;
 }
 
-float UnitGroup::GetTotalCounterDamageVersus(UnitType target)
+int UnitGroup::GetTotalRangedDamage()
 {
-	return type.GetCounterDamage(target.GetName())*count;
+	return type.GetRangedDamage()*count;
 }
 
-void UnitGroup::Bombard(UnitGroup* target) 
-{
-	target->TakeDamage(GetTotalDamageVersus(target->GetType()));
-}
-
-void UnitGroup::MeleeAttack(UnitGroup* target)
-{
-	target->Bombard(this);
-	Bombard(target);
-}
-
-void UnitGroup::TakeDamage(float damage)
+int UnitGroup::TakeDamage(float damage)
 {
 	groupHealth -= damage;
 	if (groupHealth <= 0)
 	{
 		alive = false;
+		int overkill = -groupHealth;
 		groupHealth = 0;
 		count = 0;
-		return;
+
+		return overkill; //surplus damage
 	}
 
 	count = groupHealth/type.GetHealth();
 
+	
 }
 
 UnitGroup::UnitGroup(int c, UnitType t)

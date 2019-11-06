@@ -12,11 +12,10 @@ public:
 	bool isAlive();
 	int GetGroupHealth();
 	UnitType GetType();
-	float GetTotalDamageVersus(UnitType target);
-	float GetTotalCounterDamageVersus(UnitType target);
-	void Bombard(UnitGroup* target);
-	void MeleeAttack(UnitGroup* target);
-	void TakeDamage(float damage);
+	int GetTotalDamage();
+	int GetTotalRangedDamage();
+
+	int TakeDamage(float damage);
 	UnitGroup(int count, UnitType type);
 	~UnitGroup();
 };
