@@ -8,6 +8,11 @@ BattleSimulation::BattleSimulation(Army a, Army b)
 	armyB = b;
 }
 
+void BattleSimulation::SimulateTurn()
+{
+	
+}
+
 
 BattleSimulation::~BattleSimulation()
 {

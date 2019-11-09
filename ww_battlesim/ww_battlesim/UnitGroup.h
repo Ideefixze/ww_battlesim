@@ -1,5 +1,6 @@
 #pragma once
 #include "UnitType.h"
+#include <iostream>
 class UnitGroup
 {
 	int count;
@@ -14,9 +15,11 @@ public:
 	UnitType GetType();
 	int GetTotalDamage();
 	int GetTotalRangedDamage();
+	int GetCount();
 
-	int TakeDamage(float damage);
+	int TakeDamage(int damage);
 	UnitGroup(int count, UnitType type);
+	void PrintInfo();
 	~UnitGroup();
 };
 

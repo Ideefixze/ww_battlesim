@@ -22,13 +22,23 @@ float UnitType::GetRangedDamage()
 	return rangedDamage;
 }
 
-UnitType::UnitType(std::string unitName, int baseHP, int baseDamage, int baseRangedDamage, std::map<std::string, float> dmgVersus)
+bool UnitType::IsMeele()
+{
+	return isMeele;
+}
+
+UnitType::UnitType(std::string unitName, int baseHP, int baseDamage, int baseRangedDamage, bool meele)
 {
 	name = unitName;
 	health = baseHP;
 	damage = baseDamage;
 	rangedDamage = baseRangedDamage;
-	damageModifierVersus = dmgVersus;
+	isMeele = meele;
+}
+
+UnitType::UnitType()
+{
+
 }
 
 UnitType::~UnitType()

@@ -7,6 +7,7 @@ class UnitType
 	int health;
 	float damage;
 	float rangedDamage;
+	bool isMeele = true;
 	std::map<std::string, float> damageModifierVersus;
 
 public:
@@ -14,7 +15,9 @@ public:
 	int GetHealth();
 	float GetDamage();
 	float GetRangedDamage();
-	UnitType(std::string unitName, int baseHP, int baseDamage, int rangedDamage, std::map<std::string, float> dmgVersus);
+	bool IsMeele();
+	UnitType(std::string unitName, int baseHP, int baseDamage, int rangedDamage, bool meele);
+	UnitType();
 	~UnitType();
 };
 
