@@ -34,7 +34,7 @@ int UnitGroup::GetCount()
 
 int UnitGroup::TakeDamage(int damage)
 {
-	std::cout << GetType().GetName() << " take " << damage << " damage!" << std::endl;
+	//std::cout << GetType().GetName() << " take " << damage << " damage!" << std::endl;
 	groupHealth -= damage;
 	if (groupHealth <= 0)
 	{
@@ -47,7 +47,7 @@ int UnitGroup::TakeDamage(int damage)
 	}
 
 	count = groupHealth/type.GetHealth();
-	std::cout << GetType().GetName() << " count: " << count << "!" << std::endl;
+	//std::cout << GetType().GetName() << " count: " << count << "!" << std::endl;
 
 	return 0;
 
@@ -64,7 +64,7 @@ UnitGroup::UnitGroup(int c, UnitType t)
 
 void UnitGroup::PrintInfo()
 {
-	std::cout << GetType().GetName() << " " << count << std::endl;
+	std::cout << GetType().GetName() << " " << count << std::endl;//" ("<<GetType().GetHealth()<< " HP, "<< GetType().GetDamage() <<" DMG, "<<GetType().GetRangedDamage()<<" R_DMG )" << std::endl;
 }
 
 UnitGroup::~UnitGroup()

@@ -24,7 +24,7 @@ void Army::AddGroup(UnitGroup group)
 bool Army::isAlive()
 {
 	bool alive = false;
-	for (auto i : groups)
+	for (UnitGroup &i : groups)
 	{
 		if (i.isAlive()) return true;
 	}
@@ -53,7 +53,7 @@ void Army::ApplyDamage(int damage)
 
 void Army::ApplyRangedDamage(int damage)
 {
-	while (damage > 0)
+	while (damage > 1)
 	{
 		for (UnitGroup &i : groups)
 		{
@@ -63,7 +63,7 @@ void Army::ApplyRangedDamage(int damage)
 				damage = damage + overkill;
 			}
 
-			if (damage <= 0 || isAlive()==false) return;
+			if (damage <= 1 || isAlive()==false) return;
 			
 		}
 	}
@@ -77,19 +77,55 @@ int Army::RandomizeDamageTaken(int * damage)
 	return randomized;
 }
 
+float Army::ThrowDice(int min, int max)
+{
+	int randomized = (rand() % (max - min + 1)) + min;
+	float r_bonus = (1.0f + float(randomized*(randomized-1))/100.0f);
+	std::cout << r_bonus << "%" << std::endl;
+	return r_bonus;
+}
+
 void Army::PrintInfo()
 {
+	std::cout << "----  "<<armyName<<"  ----" << std::endl;
+	std::cout << "Total meele damage: " << GetTotalMeeleDamage() << std::endl;
+	std::cout << "Total ranged damage: " << GetTotalRangedDamage() << std::endl;
+	std::cout << "====  ====  ====" << std::endl;
 	int k = 0;
 	for (auto i : groups)
 	{
+		
 		std::cout << k++ << ". ";
 		i.PrintInfo();
 	}
+	std::cout << "====  ====  ====" << std::endl;
+	std::cout << "----  ----  ----" << std::endl;
+}
+
+int Army::GetTotalMeeleDamage()
+{
+	int sum=0;
+	for (UnitGroup &i : groups)
+	{
+		sum += i.GetTotalDamage();
+	}
+	return sum;
+}
+
+int Army::GetTotalRangedDamage()
+{
+	int sum = 0;
+	for (UnitGroup &i : groups)
+	{
+		sum += i.GetTotalRangedDamage();
+	}
+	return sum;
 }
 
 
-Army::Army()
+Army::Army(std::string name)
 {
+	armyName = name;
 }
 
 

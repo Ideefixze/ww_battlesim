@@ -8,6 +8,7 @@ class BattleSimulation
 public:
 	BattleSimulation(Army a, Army b);
 	void SimulateTurn();
+	void SimulateBattle(bool showSteps);
 	~BattleSimulation();
 };
 
